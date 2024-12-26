@@ -1,0 +1,26 @@
+﻿@page "/Editor"
+@rendermode InteractiveServer
+
+<PageTitle>Editor</PageTitle>
+
+<h1>Editor</h1>
+
+<h2>Сохранённый текст:</h2>
+
+<textarea @bind=textField @bind:event="onpres"></textarea>
+
+@code {
+    private string editorText = string.Empty;
+
+    private void UpdateEditorText(string newText)
+    {
+        editorText = newText;
+    }
+
+    private string textField = "";
+}
+
+<TinyMCE.Blazor.Editor 
+    ScriptSrc="lib/tinymce/tinymce.min.js"
+    @bind-Value="textField"
+/>
